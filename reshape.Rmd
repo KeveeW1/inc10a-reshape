@@ -6,3 +6,51 @@ date: "2023-11-28"
 
 Let's put this on github!
 
+```{r}
+gdp <- read_delim("oecd-gdp.csv.bz2")
+gdp %>% 
+  head()
+```
+
+```{r}
+gdpLong <- gdp %>% 
+  pivot_longer(!c(country, indicator))
+
+gdpLong %>% 
+  head(10)
+```
+
+```{r}
+gdpLong <- gdp %>% 
+  pivot_longer(!c(country, indicator), names_to = "year", values_to = "gdp") %>% 
+  mutate(year = as.numeric(year))
+
+gdpLong %>% 
+  head(10)
+```
+
+## from wide form to long
+```{r}
+p <- data.frame(pregnant = c("Yes", "No"),
+            	male = c(NA, 25),
+            	female = c(11, 18))
+p
+```
+to long form
+```{r}
+pl <- p %>%
+  pivot_longer(c(male, female),
+           	names_to = "sex",
+           	values_to = "count")
+pl
+```
+
+from long to wide form
+```{r}
+pl %>% 
+  pivot_wider(id_cols = pregnant, 
+              names_from = sex, 
+              values_from = count)
+```
+
+
