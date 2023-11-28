@@ -29,7 +29,7 @@ gdpLong %>%
   head(10)
 ```
 
-## from wide form to long
+from wide form to long
 ```{r}
 p <- data.frame(pregnant = c("Yes", "No"),
             	male = c(NA, 25),
