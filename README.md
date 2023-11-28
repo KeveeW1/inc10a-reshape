@@ -1,2 +1,2 @@
-# incl10a-reshape
+# inc10a-reshape
 INFO 201 Lecture on Reshaping Data
